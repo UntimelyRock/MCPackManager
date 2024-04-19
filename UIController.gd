@@ -28,3 +28,7 @@ func _on_pack_selected(path:String):
 
 func _on_open_test_pack_button_down():
 	emit_signal("selected_pack", "D:/Users/Desktop/bedrock-samples-1.20.70.6/bedrock-samples-1.20.70.6/resource_pack/manifest.json")
+
+
+func _on_open_java_test_pack_button_down():
+	emit_signal("selected_pack", "D:/Users/Desktop/VanillaDefault 1.20.4/pack.mcmeta")	
