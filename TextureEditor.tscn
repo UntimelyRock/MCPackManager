@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc4f6taxy0f4a"]
+
+[ext_resource type="Script" path="res://TextureEditor.gd" id="1_6isjj"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6isjj")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = -65
+
+[node name="TabContainer" type="TabContainer" parent="Panel/HSplitContainer"]
+layout_mode = 2
+tab_alignment = 1
+
+[node name="3D Display" type="SubViewportContainer" parent="Panel/HSplitContainer/TabContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="Panel/HSplitContainer/TabContainer/3D Display"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Panel/HSplitContainer/TabContainer/3D Display/SubViewport"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 2.49755, 2.08818, 2.55903)
+fov = 75.9375
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Panel/HSplitContainer/TabContainer/3D Display/SubViewport"]
+
+[node name="2D Display" type="TextureRect" parent="Panel/HSplitContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Tools" type="TabContainer" parent="Panel/HSplitContainer"]
+layout_mode = 2
+
+[node name="ColorTools" type="ItemList" parent="Panel/HSplitContainer/Tools"]
+layout_mode = 2
+
+[node name="MouseSelect" type="TextureRect" parent="Panel/HSplitContainer/Tools/ColorTools"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://84cmjynnrjvp"]
+[gd_scene load_steps=5 format=3 uid="uid://84cmjynnrjvp"]
 
 [ext_resource type="Script" path="res://UIController.gd" id="1_kf14h"]
 [ext_resource type="Script" path="res://EditorWindowTabController.gd" id="2_6l4pw"]
 [ext_resource type="Script" path="res://PackController.gd" id="2_rxe2i"]
 [ext_resource type="Script" path="res://LeftEditorController.gd" id="3_487oq"]
-[ext_resource type="PackedScene" uid="uid://bc4f6taxy0f4a" path="res://TextureEditor.tscn" id="4_68d41"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -118,9 +117,6 @@ tabs_visible = false
 
 [node name="TextureEditor" type="Panel" parent="Panel/Editor Window/EditorWindowRight"]
 layout_mode = 2
-
-[node name="Control" parent="Panel/Editor Window/EditorWindowRight/TextureEditor" instance=ExtResource("4_68d41")]
-layout_mode = 1
 
 [node name="TextEditor" type="Panel" parent="Panel/Editor Window/EditorWindowRight"]
 visible = false

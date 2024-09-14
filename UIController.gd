@@ -1,6 +1,10 @@
 extends Control
 
 signal selected_pack(pack_path: String)
+signal update_left_editor_window(left_editor_contence: String)
+
+@onready var file = 'res://blocklist(Example).txt'
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -19,16 +23,20 @@ func _on_open_pack_button_down():
 	pack_selector.connect("file_selected", _on_pack_selected)
 	add_child(pack_selector)
 	
+	
+
+func _test_file_tree():
+	var f = FileAccess.open(file, FileAccess.READ)
+	emit_signal("update_left_editor_window", f.get_as_text())
 
 func _on_pack_selected(path:String):
 	print(path)
 	emit_signal("selected_pack", path)
-	
-
 
 func _on_open_test_pack_button_down():
+	_test_file_tree()
 	emit_signal("selected_pack", "D:/Users/Desktop/bedrock-samples-1.20.70.6/bedrock-samples-1.20.70.6/resource_pack/manifest.json")
 
-
 func _on_open_java_test_pack_button_down():
+	_test_file_tree()
 	emit_signal("selected_pack", "D:/Users/Desktop/VanillaDefault 1.20.4/pack.mcmeta")	
