@@ -1,0 +1,134 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq42lcu0e8k51"]
+
+[ext_resource type="Script" path="res://Scripts/SampleRetrievalWindow.gd" id="1_dinjw"]
+
+[node name="SampleManager" type="Window"]
+initial_position = 4
+size = Vector2i(700, 400)
+script = ExtResource("1_dinjw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TAB_JAVA_SAMPLES" type="Control" parent="Control/Panel/TabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/TabContainer/TAB_JAVA_SAMPLES"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/TabContainer/TAB_JAVA_SAMPLES/VBoxContainer"]
+layout_mode = 2
+text = "JAVA_SAMPLE_DESCRIPTION"
+fit_content = true
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Control/Panel/TabContainer/TAB_JAVA_SAMPLES/VBoxContainer"]
+custom_minimum_size = Vector2(0, 9.77)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Panel/TabContainer/TAB_JAVA_SAMPLES/VBoxContainer"]
+layout_mode = 2
+text = "JAVA_SAMPLE_INSTALLED_HEADER"
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/TabContainer/TAB_JAVA_SAMPLES/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="InstalledSamplesList" type="VBoxContainer" parent="Control/Panel/TabContainer/TAB_JAVA_SAMPLES/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Control/Panel/TabContainer/TAB_JAVA_SAMPLES"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/TabContainer/TAB_JAVA_SAMPLES/ReferenceRect"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Control/Panel/TabContainer/TAB_JAVA_SAMPLES/ReferenceRect/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Select Java Sample Button" type="Button" parent="Control/Panel/TabContainer/TAB_JAVA_SAMPLES/ReferenceRect/HBoxContainer/ReferenceRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -15.5
+offset_right = 116.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "JAVA_SAMPLE_SELECT_JAR"
+
+[node name="ReferenceRect2" type="ReferenceRect" parent="Control/Panel/TabContainer/TAB_JAVA_SAMPLES/ReferenceRect/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Close Button" type="Button" parent="Control/Panel/TabContainer/TAB_JAVA_SAMPLES/ReferenceRect/HBoxContainer/ReferenceRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -15.5
+offset_right = 25.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "MENU_CLOSE"
+
+[node name="TAB_BEDROCK_SAMPLES" type="Control" parent="Control/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="Control/Panel/TabContainer/TAB_JAVA_SAMPLES/ReferenceRect/HBoxContainer/ReferenceRect2/Close Button" to="." method="_on_close_requested"]

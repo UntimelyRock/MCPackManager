@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MCPackManager"
-run/main_scene="res://Windows/MainEditor/BaseScene.tscn"
+run/main_scene="res://BaseScene.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -30,11 +30,6 @@ project/assembly_name="MCPackManager"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
-[global]
-
-BedrockTestpackPath.editor=""
-JavaTestpackPath.editor=""
-
 [input]
 
 ui_zoom_in={
@@ -50,8 +45,7 @@ ui_zoom_out={
 
 [internationalization]
 
-locale/translation_remaps={}
-locale/translations=PackedStringArray("res://Localization.en.translation")
+locale/translations_pot_files=PackedStringArray("res://PackController.gd")
 
 [rendering]
 

@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=3 uid="uid://bc4f6taxy0f4a"]
+
+[ext_resource type="Script" path="res://Scripts/TextureEditor.gd" id="1_6isjj"]
+[ext_resource type="Script" path="res://Scripts/3DDisplayControl.gd" id="2_53knw"]
+[ext_resource type="Texture2D" uid="uid://yvcsst0021hu" path="res://icon.svg" id="2_i78jh"]
+[ext_resource type="Script" path="res://Scripts/3dCameraControll.gd" id="4_4kitf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ppwsg"]
+sky_top_color = Color(0.0980392, 0.478431, 0.639216, 1)
+sky_horizon_color = Color(0.32549, 0.00392157, 0.305882, 1)
+sky_curve = 0.113679
+ground_bottom_color = Color(0.34902, 0.0431373, 0.160784, 1)
+ground_horizon_color = Color(0.326894, 0.00215029, 0.307262, 1)
+ground_curve = 1.113
+sun_angle_max = 0.0
+sun_curve = 1e-05
+
+[sub_resource type="Sky" id="Sky_rpr22"]
+sky_material = SubResource("ProceduralSkyMaterial_ppwsg")
+
+[sub_resource type="Environment" id="Environment_1w4ur"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_rpr22")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 1
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pgb30"]
+albedo_color = Color(0.498039, 0.498039, 0.498039, 0)
+albedo_texture = ExtResource("2_i78jh")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6isjj")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 515
+
+[node name="TabContainer" type="TabContainer" parent="Panel/HSplitContainer"]
+layout_mode = 2
+tab_alignment = 1
+
+[node name="TAB_3D_DISPALY" type="SubViewportContainer" parent="Panel/HSplitContainer/TabContainer"]
+layout_mode = 2
+stretch = true
+script = ExtResource("2_53knw")
+
+[node name="SubViewport" type="SubViewport" parent="Panel/HSplitContainer/TabContainer/TAB_3D_DISPALY"]
+handle_input_locally = false
+size = Vector2i(515, 617)
+render_target_update_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Panel/HSplitContainer/TabContainer/TAB_3D_DISPALY/SubViewport"]
+environment = SubResource("Environment_1w4ur")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Panel/HSplitContainer/TabContainer/TAB_3D_DISPALY/SubViewport/WorldEnvironment"]
+material = SubResource("StandardMaterial3D_pgb30")
+
+[node name="CameraGimbal" type="Node3D" parent="Panel/HSplitContainer/TabContainer/TAB_3D_DISPALY/SubViewport/WorldEnvironment"]
+
+[node name="Camera3D" type="Camera3D" parent="Panel/HSplitContainer/TabContainer/TAB_3D_DISPALY/SubViewport/WorldEnvironment/CameraGimbal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+fov = 75.9375
+script = ExtResource("4_4kitf")
+
+[node name="TAB_2D_DISPALY" type="TextureRect" parent="Panel/HSplitContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Tools" type="TabContainer" parent="Panel/HSplitContainer"]
+layout_mode = 2
+
+[node name="TAB_COLOR_TOOLS" type="ItemList" parent="Panel/HSplitContainer/Tools"]
+layout_mode = 2
+
+[node name="MouseSelect" type="TextureRect" parent="Panel/HSplitContainer/Tools/TAB_COLOR_TOOLS"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TAB_SHAPES" type="ItemList" parent="Panel/HSplitContainer/Tools"]
+visible = false
+layout_mode = 2
+
+[node name="Tree" type="Tree" parent="Panel/HSplitContainer/Tools/TAB_SHAPES"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="mouse_entered" from="Panel/HSplitContainer/TabContainer/TAB_3D_DISPALY" to="Panel/HSplitContainer/TabContainer/TAB_3D_DISPALY" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Panel/HSplitContainer/TabContainer/TAB_3D_DISPALY" to="Panel/HSplitContainer/TabContainer/TAB_3D_DISPALY/SubViewport/WorldEnvironment/CameraGimbal/Camera3D" method="_on_controll_3dView"]
+[connection signal="mouse_exited" from="Panel/HSplitContainer/TabContainer/TAB_3D_DISPALY" to="Panel/HSplitContainer/TabContainer/TAB_3D_DISPALY" method="_on_mouse_exited"]
+[connection signal="mouse_exited" from="Panel/HSplitContainer/TabContainer/TAB_3D_DISPALY" to="Panel/HSplitContainer/TabContainer/TAB_3D_DISPALY/SubViewport/WorldEnvironment/CameraGimbal/Camera3D" method="_on_stop_controll_3dView"]

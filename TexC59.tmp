@@ -26,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-split_offset = -65
+split_offset = 515
 
 [node name="TabContainer" type="TabContainer" parent="Panel/HSplitContainer"]
 layout_mode = 2
@@ -34,10 +34,12 @@ tab_alignment = 1
 
 [node name="3D Display" type="SubViewportContainer" parent="Panel/HSplitContainer/TabContainer"]
 layout_mode = 2
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Panel/HSplitContainer/TabContainer/3D Display"]
 handle_input_locally = false
-render_target_update_mode = 4
+size = Vector2i(2, 2)
+render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="Panel/HSplitContainer/TabContainer/3D Display/SubViewport"]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 2.49755, 2.08818, 2.55903)

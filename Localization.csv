@@ -1,0 +1,18 @@
+key,en
+TBAR_FILE,File
+TBAR_PROJECT,Project
+TBAR_TEXTURE,3D Texture
+TBAR_TEXT_EDITOR,TextEditor
+TAB_3D_DISPALY,3D Display
+TAB_2D_DISPALY,3D Display
+TAB_COLOR_TOOLS,Color Tools
+TAB_SHAPES,Shapes
+SAVE_PACK,Save Pack
+OPEN_PACK,Open Pack
+OPEN_SAMPLE_MANAGER,Samples
+TAB_JAVA_SAMPLES,Java Samples
+TAB_BEDROCK_SAMPLES,Bedrock Samples
+JAVA_SAMPLE_DESCRIPTION,"MCPack manager requires	th	e default assets from Minecraft Java edition order to work. This tool is designed to automatically extract them for you from Minecraft's JAR file."
+JAVA_SAMPLE_INSTALLED_HEADER,Installed Java Samples
+MENU_CLOSE,Close
+JAVA_SAMPLE_SELECT_JAR,Select Jar to extract sample

@@ -30,11 +30,6 @@ project/assembly_name="MCPackManager"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
-[global]
-
-BedrockTestpackPath.editor=""
-JavaTestpackPath.editor=""
-
 [input]
 
 ui_zoom_in={
@@ -50,8 +45,7 @@ ui_zoom_out={
 
 [internationalization]
 
-locale/translation_remaps={}
-locale/translations=PackedStringArray("res://Localization.en.translation")
+locale/translations_pot_files=PackedStringArray("res://PackController.gd")
 
 [rendering]
 
